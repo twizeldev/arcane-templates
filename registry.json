@@ -1,0 +1,21 @@
+{
+    "$schema": "https://templates.arcane.ofkm.dev/schema.json",
+    "name": "twizeldev community templates",
+    "description": "Docker templates for community use",
+    "version": "1.0.0",
+    "author": "twizeldev",
+    "url": "https://github.com/twizeldev/arcane-templates",
+    "templates": [
+        {
+            "id": "music",
+            "name": "Music Management & Streaming",
+            "description": "LIdarr plugins branch plus media streaming",
+            "version": "1.0.0",
+            "author": "twizeldev",
+            "compose_url": "https://raw.githubusercontent.com/twizeldev/arcane-templates/main/music/docker-compose.yml",
+            "env_url": "https://raw.githubusercontent.com/twizeldev/arcane-templates/main/music/.env.example",
+            "documentation_url": "https://raw.githubusercontent.com/twizeldev/arcane-templates/main/music/internal-app",
+            "tags": ["music", "streaming", "download"]
+        }
+    ]
+}
