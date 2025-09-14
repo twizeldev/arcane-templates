@@ -1,21 +1,29 @@
+### Docker Compose - Music Stack Template
+version: '3.9'
+
 services:
   lidarr:
     image: ghcr.io/hotio/lidarr:pr-plugins
     container_name: lidarr
-    restart: ${RESTART_POLICY}
+    restart: ${RESTART_POLICY}                              # Uses the policy defined in your .env file
     environment:
-      - TZ=${TZ}
-      - PUID=${PUID}
-      - PGID=${PGID}
-      - UMASK=002
+      TZ: ${TZ}                                             # Timezone from .env
+      PUID: ${PUID}                                         # User ID for permissions
+      PGID: ${PGID}                                         # Group ID for permissions
+      UMASK: 002                                            # Optional, default file permissions mask
     ports:
-      - "${BIND_ADDRESS:-0.0.0.0}:${LIDARR_PORT:-8686}:8686"
+      - "${BIND_ADDRESS}:${LIDARR_PORT:-8686}:8686"         # Exposes port, defaults to 8686 if not set
     volumes:
-      - "${CONFIG_DIR}/lidarr/config:/config"
-      - "${DATA_DIR}:/data"
+      - "${CONFIG_DIR}/lidarr/config:/config"               # Persist Lidarr config
+      - "${DATA_DIR}:/data"                                 # Music library & downloads
     networks:
+      - music_net
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8989"]
+      test: ["CMD", "curl", "-f", "http://localhost:8686"]  # Note: Lidarr defaults to 8686
       interval: 30s
       timeout: 10s
       retries: 5
+
+networks:
+  music_net:
+    driver: bridge
