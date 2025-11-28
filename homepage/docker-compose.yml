@@ -1,0 +1,29 @@
+### Docker Compose - Homepage
+services:
+  homepage:
+    image: ghcr.io/gethomepage/homepage:latest
+    container_name: homepage
+    restart: ${RESTART_POLICY}
+    env_file: .env
+    ports:
+      - - "${HP_BIND_ADDRESS}:${HP_BIND_PORT:-3000}:3000"
+    volumes:
+      - "${CONFIG_DIR}/homepage/config:/config"
+    networks:
+      - homepage_net
+
+  docker-socket-proxy:
+    image: ghcr.io/tecnativa/docker-socker-proxy:latest
+    container_name: homepage-dsp
+    restart: ${RESTART_POLICY}
+    env_file: .env
+    ports:
+      - "${DSP_BIND_ADDRESS}:${DSP_BIND_PORT:-2375}:2375"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    networks:
+      - homepage_net
+
+networks:
+  homepage_net:
+    driver: bridge
