@@ -14,8 +14,19 @@
             "author": "twizeldev",
             "compose_url": "https://raw.githubusercontent.com/twizeldev/arcane-templates/main/music/docker-compose.yml",
             "env_url": "https://raw.githubusercontent.com/twizeldev/arcane-templates/main/music/.env.example",
-            "documentation_url": "https://raw.githubusercontent.com/twizeldev/arcane-templates/main/music/internal-app",
+            "documentation_url": "https://raw.githubusercontent.com/twizeldev/arcane-templates/main/music/README.md",
             "tags": ["music", "streaming", "download"]
+        },
+        {
+            "id": "homepage",
+            "name": "Homepage",
+            "description": "Personal dashboard with docker socket proxy integration",
+            "version": "1.0.0",
+            "author": "twizeldev",
+            "compose_url": "https://raw.githubusercontent.com/twizeldev/arcane-templates/main/homepage/docker-compose.yml",
+            "env_url": "https://raw.githubusercontent.com/twizeldev/arcane-templates/main/homepage/.env.example",
+            "documentation_url": "https://raw.githubusercontent.com/twizeldev/arcane-templates/main/homepage/README.md",
+            "tags": ["dashboard", "docker", "admin"]
         }
     ]
 }
