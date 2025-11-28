@@ -1,5 +1,5 @@
 {
-    "$schema": "https://templates.arcane.ofkm.dev/schema.json",
+    "$schema": "https://registry.getarcane.app/schema.json",
     "name": "twizeldev community templates",
     "description": "Docker templates for community use",
     "version": "1.0.0",
